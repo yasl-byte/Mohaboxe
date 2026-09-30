@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#121216">
+  <meta name="description" content="Mohaboxe : musculation, boxe, alimentation et suivi pour le challenge de 3 mois.">
+  <title>Mohaboxe</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">MOHA<span>BOXE</span></div>
+    <button class="points-pill" id="pointsPill" aria-label="Voir mes points">
+      <span class="pp-grade" id="ppGrade">Espoir</span>
+      <span class="pp-val" id="ppVal">0 pts</span>
+    </button>
+  </header>
+
+  <div class="datebar">
+    <button class="dnav" id="dPrev" aria-label="Jour précédent">‹</button>
+    <div class="dmid">
+      <div class="dlabel" id="dLabel"></div>
+      <div class="dsub" id="dSub"></div>
+    </div>
+    <button class="dnav" id="dNext" aria-label="Jour suivant">›</button>
+    <button class="dtoday" id="dToday" hidden>Aujourd’hui</button>
+  </div>
+
+  <main id="view"></main>
+
+  <nav class="tabbar">
+    <button data-tab="muscu" class="active"><span class="ti">🏋️</span><span>Muscu</span></button>
+    <button data-tab="boxe"><span class="ti">🥊</span><span>Boxe</span></button>
+    <button data-tab="food"><span class="ti">🍽️</span><span>Alimentation</span></button>
+    <button data-tab="stats"><span class="ti">📈</span><span>Stats</span></button>
+  </nav>
+
+  <!-- Feuille modale générique -->
+  <div class="sheet-bg" id="sheetBg" hidden></div>
+  <section class="sheet" id="sheet" hidden aria-modal="true" role="dialog"></section>
+
+  <!-- Minuteur plein écran -->
+  <section class="timer" id="timer" hidden aria-live="polite"></section>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+    }
+  </script>
+</body>
+</html>
